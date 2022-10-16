@@ -85,5 +85,6 @@ public class Contact {
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
         this.email = email;
+
     }
 }
