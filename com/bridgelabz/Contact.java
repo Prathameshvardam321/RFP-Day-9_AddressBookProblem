@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import java.util.Scanner;
+
 public class Contact {
     private String firstName;
     private String lastName;
@@ -86,5 +88,39 @@ public class Contact {
         this.phoneNumber = phoneNumber;
         this.email = email;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode=" + zipCode +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    void getPersonDetails(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter first name :");
+        firstName = scan.next();
+        System.out.println("Enter last name :");
+        lastName = scan.next();
+        System.out.println("Enter address : ");
+        address = scan.next();
+        System.out.println("Enter city : ");
+        city = scan.next();
+        System.out.println("Enter state : ");
+        state = scan.next();
+        System.out.println("Enter zipcode : ");
+        zipCode = scan.nextInt();
+        System.out.println("Enter phone number : ");
+        phoneNumber = scan.nextInt();
+        System.out.println("Enter email : ");
+        email = scan.next();
     }
 }
