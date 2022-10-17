@@ -55,6 +55,7 @@ public class AddressBookMain {
                             iterator2.remove();
                         }
                     }
+                    break;
                 default:
                     if (choice!=0)
                     System.out.println("Enter valid inputs.");
