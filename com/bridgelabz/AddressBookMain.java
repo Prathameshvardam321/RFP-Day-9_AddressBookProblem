@@ -31,30 +31,6 @@ public class AddressBookMain {
                         System.out.println(addressBook);
                     }
                     break;
-                case 3:
-                    System.out.println("Enter first name : ");
-                    ListIterator<AddressBook> iterator = bookArrayList.listIterator();
-                    String name = scan.next();
-                    while (iterator.hasNext()){
-                        addressBook = iterator.next();
-                        if (name.equals(addressBook.contact.getFirstName())){
-                            addressBook.contactDetails();
-                            iterator.set(addressBook);
-                        }else {
-                            System.out.println("Enter data not found.");
-                        }
-                    }
-                    break;
-                case 4:
-                    System.out.println("Enter first name : ");
-                    name = scan.next();
-                    Iterator<AddressBook> iterator2 = bookArrayList.iterator();
-                    while (iterator2.hasNext()){
-                        addressBook = iterator2.next();
-                        if (name.equals(addressBook.contact.getFirstName())){
-                            iterator2.remove();
-                        }
-                    }
                 default:
                     if (choice!=0)
                     System.out.println("Enter valid inputs.");
