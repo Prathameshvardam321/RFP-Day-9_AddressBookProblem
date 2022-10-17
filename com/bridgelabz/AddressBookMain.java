@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class AddressBookMain {
     public static void main(String[] args) {
+
       ArrayList<AddressBook> bookArrayList = new ArrayList<>();
       Scanner scan = new Scanner(System.in);
       int choice;
