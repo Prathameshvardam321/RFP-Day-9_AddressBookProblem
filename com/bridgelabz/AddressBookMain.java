@@ -34,7 +34,6 @@ public class AddressBookMain {
                 default:
                     if (choice!=0)
                     System.out.println("Enter valid inputs.");
-
             }
         }while (choice!=0);
 
