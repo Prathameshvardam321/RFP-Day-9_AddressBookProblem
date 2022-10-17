@@ -122,5 +122,5 @@ public class Contact {
         phoneNumber = scan.nextInt();
         System.out.println("Enter email : ");
         email = scan.next();
-    }
+     }
 }
