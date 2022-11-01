@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class AddressBookMain {
+
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
         Scanner sc = new Scanner(System.in);
@@ -13,6 +14,7 @@ public class AddressBookMain {
         while (true){
             System.out.println("0.Exit \n1.Add Contact \n2.Display Contact \n3.Edit Contact \n4.Delete Contact \n5.Add new Address Book" +
                     "\n6.Display available address books \n7.Display all address books");
+            System.out.println("Enter your choice : " );
             int ch = sc.nextInt();
             switch (ch){
                 case 0:
@@ -23,7 +25,7 @@ public class AddressBookMain {
                     String addressBookName = sc.next();
                     if (!addressBookHashMap.containsKey(addressBookName)){
                         System.out.println("Address book not exists!");
-                       AddressBook addressBook = new AddressBook();
+                        AddressBook addressBook = new AddressBook();
                         addressBook.addContact();
                     }else {
                         System.out.println("Address book already exists.");
