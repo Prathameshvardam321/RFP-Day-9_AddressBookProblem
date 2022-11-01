@@ -17,7 +17,7 @@ public class AddressBookMain {
             switch (choice) {
                 case 1:
                   AddressBook addressBook = new AddressBook();
-                  addressBook.contactDetails();
+                  addressBook.addContact();
                   bookArrayList.add(addressBook);
                   break;
                 case 2:
