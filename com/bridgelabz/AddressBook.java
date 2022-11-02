@@ -22,9 +22,8 @@ public class AddressBook {
         contacts.add(contact);
     }
     public void  displayContact() {
-        for(int i = 0; i < contacts.size(); i++) {
-            Contact contact = contacts.get(i);
-            System.out.println(contact.toString());
+        for (Contact contact:contacts){
+            System.out.println(contact);
         }
     }
 

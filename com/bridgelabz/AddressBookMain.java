@@ -13,7 +13,7 @@ public class AddressBookMain {
         HashMap<String, AddressBook> addressBookHashMap = new HashMap<>();
         while (true){
             System.out.println("0.Exit \n1.Add Contact \n2.Display Contact \n3.Edit Contact \n4.Delete Contact \n5.Add new Address Book" +
-                    "\n6.Display available address books \n7.Display all address books");
+                    "\n6.Display available address books");
             System.out.println("Enter your choice : " );
             int ch = sc.nextInt();
             switch (ch){
@@ -25,10 +25,12 @@ public class AddressBookMain {
                     String addressBookName = sc.next();
                     if (!addressBookHashMap.containsKey(addressBookName)){
                         System.out.println("Address book not exists!");
-                        AddressBook addressBook = new AddressBook();
-                        addressBook.addContact();
+
+
                     }else {
                         System.out.println("Address book already exists.");
+                        AddressBook addressBook = addressBookHashMap.get(addressBookName);
+                        addressBook.addContact();
                     }
                     break;
                 case 2:
@@ -72,26 +74,13 @@ public class AddressBookMain {
                     }
                     break;
                 case 6:
-                    Set<String> keys = addressBookHashMap.keySet();
-                    if (keys.isEmpty()){
-                        System.out.println("No address books available!");
-                    }
-                    for (String str : keys){
-                        System.out.print(str +" ");
-                    }
-                    System.out.println();
-                    break;
-                case 7:
-                    Set<Map.Entry<String, AddressBook>> addressBook = addressBookHashMap.entrySet();
-                    if (addressBook.isEmpty()){
-                        System.out.println("No address books available!");
-                    }
-                    for (Map.Entry entry :  addressBook){
-                        System.out.println(entry.getKey());
-                        AddressBook addBook = (AddressBook) entry.getValue();
-                        addBook.displayContact();
+                    if (addressBookHashMap.isEmpty()){
+                        System.out.println("There are no addressbooks available.");
+                    }else {
+                        System.out.println(addressBookHashMap.keySet());
                     }
                     break;
+
                 default:
                     System.out.println("Invalid Input");
             }
