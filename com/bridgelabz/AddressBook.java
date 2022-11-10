@@ -8,7 +8,7 @@ public class AddressBook {
     Scanner sc = new Scanner(System.in);
 
     private ArrayList<Contact> contacts = new ArrayList<>();
-    public void addContact(String name, HashMap <String ,AddressBook> hashMap) {
+    public void addContact() {
         AddressBook addressBook = new AddressBook();
         Contact contact = new Contact();
         System.out.println("Enter the First Name : ");
