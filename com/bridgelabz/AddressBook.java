@@ -21,6 +21,12 @@ public class AddressBook {
         contact.setState(sc.next());
         System.out.println("Enter the Email Id : ");
         contact.setEmail(sc.next());
+        System.out.println("Enter zipcode : ");
+        contact.setZipCode(sc.nextInt());
+        System.out.println("Enter phone number : ");
+        contact.setPhoneNumber(sc.nextInt());
+        System.out.println("Enter email : ");
+        contact.setEmail(sc.next());
         for (Contact contact1 : contacts) {
             if (contact1.equals(contact)) {
                 System.out.println("Person already exists.");
