@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Contact {
@@ -101,6 +102,19 @@ public class Contact {
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(firstName, contact.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName);
     }
 
     void getPersonDetails(){
