@@ -118,6 +118,7 @@ public class Contact {
         return Objects.hash(firstName);
     }
 
+
     void getPersonDetails(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name :");

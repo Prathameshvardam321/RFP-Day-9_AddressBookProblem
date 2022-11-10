@@ -8,8 +8,8 @@ public class AddressBook {
     Scanner sc = new Scanner(System.in);
 
     private ArrayList<Contact> contacts = new ArrayList<>();
-    public void addContact(String name, HashMap <String ,AddressBook> hashMap) {
-        AddressBook addressBook = new AddressBook();
+    public void addContact() {
+        int found = 0;
         Contact contact = new Contact();
         System.out.println("Enter the First Name : ");
         contact.setFirstName(sc.next());
@@ -21,7 +21,16 @@ public class AddressBook {
         contact.setState(sc.next());
         System.out.println("Enter the Email Id : ");
         contact.setEmail(sc.next());
-        contacts.add(contact);
+        for (Contact contact1 : contacts) {
+            if (contact1.equals(contact)) {
+                System.out.println("Person already exists.");
+                found = 1;
+                break;
+            }
+        }
+        if (found == 0) {
+            contacts.add(contact);
+        }
     }
     public void  displayContact() {
         for (Contact contact:contacts){
