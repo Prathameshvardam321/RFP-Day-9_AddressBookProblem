@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 public class AddressBookMain {
     public static void main(String[] args) {
-
         System.out.println("Welcome to Address Book Program");
         Scanner scanner = new Scanner(System.in);
         HashMap<String, AddressBook> addressBookHashMap = new HashMap<>();
