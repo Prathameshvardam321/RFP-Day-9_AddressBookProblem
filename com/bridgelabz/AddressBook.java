@@ -1,10 +1,12 @@
 package com.bridgelabz;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Predicate;
 public class AddressBook {
     Scanner sc = new Scanner(System.in);
-
+    Contact contact = new Contact();
+    HashMap<String,Contact> contactHashMap = new HashMap<>();
     private ArrayList<Contact> contacts = new ArrayList<>();
     public void addContact() {
         int found = 0;
@@ -109,16 +111,31 @@ public class AddressBook {
     }
 
     public void viewPersonByCity(String cityName) {
-        Predicate<Contact> contactPredicate = t->t.getCity().equals(cityName);
-        if (contacts.stream().filter(contactPredicate).equals(true)){
-            contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
-        }else
-            System.out.println("Not exists.");
+        for (Contact c : contacts){
+            if (c.getState().equals(cityName)){
+                contactHashMap.put(cityName,c);
+            }
+        }
+        Predicate<Contact> contactPredicate = t -> t.getCity().equals(cityName);
+        contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
+        System.out.println(contactHashMap.keySet());;
 
     }
     public void viewPersonByState(String stateName){
-
         Predicate<Contact> contactPredicate = c->c.getState().equals(stateName);
+        contacts.stream().filter(contactPredicate).forEach(x->contactHashMap.put(stateName,x));
         contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
+       for (Contact c : contacts){
+           if (c.getState().equals(stateName)){
+              contactHashMap.put(stateName,c);
+           }
+       }
+        System.out.println(contactHashMap.keySet());;
+
+
     }
+    void printHashMap(){
+        System.out.println(contactHashMap.keySet());;
+    }
+
 }
