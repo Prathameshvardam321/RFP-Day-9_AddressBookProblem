@@ -1,9 +1,7 @@
 package com.bridgelabz;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
-
+import java.util.function.Predicate;
 public class AddressBook {
     Scanner sc = new Scanner(System.in);
 
@@ -44,7 +42,11 @@ public class AddressBook {
         }
     }
 
-
+    public void searchNameByState(){
+        System.out.println("Enter name of state : ");
+        String stateName = sc.next();
+        contacts.stream().filter(c->c.getCity()==stateName).forEach(x-> System.out.println(x));
+    }
     public void editContact(){
         System.out.println("Enter person name : ");
         String name = sc.next();
@@ -105,77 +107,18 @@ public class AddressBook {
         }
         System.out.println(name + " not found!");
     }
+
+    public void viewPersonByCity(String cityName) {
+        Predicate<Contact> contactPredicate = t->t.getCity().equals(cityName);
+        if (contacts.stream().filter(contactPredicate).equals(true)){
+            contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
+        }else
+            System.out.println("Not exists.");
+
+    }
+    public void viewPersonByState(String stateName){
+
+        Predicate<Contact> contactPredicate = c->c.getState().equals(stateName);
+        contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
+    }
 }
-//  while (true){
-//          System.out.println("0.Exit \n1.Add Contact \n2.Display Contact \n3.Edit Contact \n4.Delete Contact \n5.Add new Address Book" +
-//          "\n6.Display available address books");
-//          System.out.println("Enter your choice : " );
-//          int ch = sc.nextInt();
-//          switch (ch){
-//          case 0:
-//          System.exit(0);
-//          break;
-//          case 1:
-//          System.out.println("Enter the address book name to add contact in that address book : ");
-//          String addressBookName = sc.next();
-//          if (!addressBookHashMap.containsKey(addressBookName)){
-//          System.out.println("Address book not exists!");
-//
-//
-//          }else {
-//          System.out.println("Address book already exists.");
-//          AddressBook addressBook = addressBookHashMap.get(addressBookName);
-//          addressBook.addContact();
-//          }
-//          break;
-//          case 2:
-//          System.out.println("Enter the address book name to display contacts in that address book : ");
-//          String addressBookName1 = sc.next();
-//          if (!addressBookHashMap.containsKey(addressBookName1)){
-//          System.out.println("Address book not exists!");
-//          }else {
-//          AddressBook addressBook = addressBookHashMap.get(addressBookName1);
-//          addressBook.displayContact();
-//          }
-//          break;
-//          case 3:
-//          System.out.println("Enter the address book name to edit contacts in that address book : ");
-//          String addressBookName2 = sc.next();
-//          if (!addressBookHashMap.containsKey(addressBookName2)){
-//          System.out.println("Address book not exists!");
-//          }else {
-//          AddressBook addressBook = addressBookHashMap.get(addressBookName2);
-//          addressBook.editContact();
-//          }
-//          break;
-//          case 4:
-//          System.out.println("Enter the address book name to edit contacts in that address book : ");
-//          String addressBookName3 = sc.next();
-//          if (!addressBookHashMap.containsKey(addressBookName3)){
-//          System.out.println("Address book not exists!");
-//          }else {
-//          AddressBook addressBook = addressBookHashMap.get(addressBookName3);
-//          addressBook.deleteContact();
-//          }
-//          break;
-//          case 5:
-//          System.out.println("Enter the address book name : ");
-//          String name = sc.next();
-//          if (addressBookHashMap.containsKey(name)){
-//          System.out.println("Address book already exists!");
-//          }else {
-//          AddressBook addressBook = new AddressBook();
-//          addressBookHashMap.put(name, addressBook);
-//          }
-//          break;
-//          case 6:
-//          if (addressBookHashMap.isEmpty()){
-//          System.out.println("There are no address books available.");
-//          }else {
-//          System.out.println(addressBookHashMap.keySet());
-//          }
-//          break;
-//
-//default:
-//        System.out.println("Invalid Input");
-//        }
