@@ -6,11 +6,10 @@ public class AddressBookMain {
         System.out.println("Welcome to Address Book Program");
         Scanner scanner = new Scanner(System.in);
         HashMap<String, AddressBook> addressBookHashMap = new HashMap<>();
-
-        AddressBook addressBook = new AddressBook();
+        AddressBook addressBook ;
         int ch;
         do {
-            System.out.println("1.Add AddressBook\t2.Display all addressBooks\t3.Search by city 4\t4.Search by state\t5.Add contact in AddressBook ");
+            System.out.println("1.Add AddressBook\t2.Display all addressBooks\t3.Search by city 4\t4.Search by state\t5.Add contact in AddressBook\t6.SortByNames ");
             ch = scanner.nextInt();
             switch (ch) {
                 case 1:
@@ -19,7 +18,7 @@ public class AddressBookMain {
                     if (addressBookHashMap.containsKey(name)) {
                         System.out.println("AddressBook already exists.");
                     } else {
-                        addressBookHashMap.put(name, addressBook);
+                        addressBookHashMap.put(name, new AddressBook());
                     }
                     break;
                 case 2:
@@ -45,7 +44,7 @@ public class AddressBookMain {
                         String stateName = scanner.next();
                         addressBook = addressBookHashMap.get(addBookName1);
                         addressBook.viewPersonByCity(stateName);
-                        addressBook.printHashMap();
+
 
                     }else {
                         System.out.println("AddressBook not found.");
@@ -63,7 +62,30 @@ public class AddressBookMain {
                      }
                    break;
                 case 6:
-
+                    System.out.println("Enter AddressBook name : ");
+                     addBookName1 = scanner.next();
+                    if (addressBookHashMap.containsKey(addBookName1)){
+                        addressBook = addressBookHashMap.get(addBookName1);
+                        addressBook.sortContact();
+                    }else {
+                        System.out.println("AddressBook not found.");
+                    }
+                    break;
+                case 7:
+                    System.out.println("Enter AddressBook name : ");
+                    addBookName1 = scanner.next();
+                    if (addressBookHashMap.containsKey(addBookName1)) {
+                        addressBook = addressBookHashMap.get(addBookName1);
+                      long count =  addressBook.getCount();
+                        System.out.println(count);
+                    }
+                    break;
+                case 8:   System.out.println("Enter AddressBook name : ");
+                    addBookName1 = scanner.next();
+                    if (addressBookHashMap.containsKey(addBookName1)) {
+                        addressBook = addressBookHashMap.get(addBookName1);
+                        addressBook.displayContact();
+                    }
             }
             }while (ch != 0) ;
     }
