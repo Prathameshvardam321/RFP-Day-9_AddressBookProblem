@@ -136,6 +136,7 @@ public class Contact implements Comparable {
         return Objects.hash(firstName);
     }
 
+
     @Override
     public int compareTo(Object o) {
         Contact contact = (Contact) o;
