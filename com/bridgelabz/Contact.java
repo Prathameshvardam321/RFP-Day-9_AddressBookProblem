@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Contact {
+public class Contact implements Comparable {
     private String firstName;
     private String lastName;
     private String address;
@@ -88,7 +88,6 @@ public class Contact {
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
         this.email = email;
-
     }
 
 
@@ -104,20 +103,6 @@ public class Contact {
                 ", email='" + email + '\'' +
                 '}';
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Contact contact = (Contact) o;
-        return Objects.equals(firstName, contact.firstName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName);
-    }
-
-
     void getPersonDetails(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name :");
@@ -136,5 +121,25 @@ public class Contact {
         phoneNumber = scan.nextInt();
         System.out.println("Enter email : ");
         email = scan.next();
-     }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(firstName, contact.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Contact contact = (Contact) o;
+        int compareResult = this.firstName.compareTo(contact.firstName);
+        return firstName.compareTo(contact.firstName);
+    }
 }

@@ -1,32 +1,29 @@
 package com.bridgelabz;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Predicate;
 public class AddressBook {
     Scanner sc = new Scanner(System.in);
     Contact contact = new Contact();
-    HashMap<String,Contact> contactHashMap = new HashMap<>();
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    ArrayList<Contact> contacts = new ArrayList<>();
     public void addContact() {
         int found = 0;
-        Contact contact = new Contact();
-        System.out.println("Enter the First Name : ");
-        contact.setFirstName(sc.next());
-        System.out.println("Enter the Last Name : ");
-        contact.setLastName(sc.next());
-        System.out.println("Enter the City : ");
-        contact.setCity(sc.next());
-        System.out.println("Enter the State : ");
-        contact.setState(sc.next());
-        System.out.println("Enter the Email Id : ");
-        contact.setEmail(sc.next());
-        System.out.println("Enter zipcode : ");
-        contact.setZipCode(sc.nextInt());
-        System.out.println("Enter phone number : ");
-        contact.setPhoneNumber(sc.nextInt());
-        System.out.println("Enter email : ");
-        contact.setEmail(sc.next());
+//            Contact contact = new Contact();
+            System.out.println("Enter the First Name : ");
+            contact.setFirstName(sc.next());
+            System.out.println("Enter the Last Name : ");
+            contact.setLastName(sc.next());
+            System.out.println("Enter the City : ");
+            contact.setCity(sc.next());
+            System.out.println("Enter the State : ");
+            contact.setState(sc.next());
+            System.out.println("Enter the Email Id : ");
+            contact.setEmail(sc.next());
+            System.out.println("Enter zipcode : ");
+            contact.setZipCode(sc.nextInt());
+            System.out.println("Enter phone number : ");
+            contact.setPhoneNumber(sc.nextInt());
+            System.out.println("Enter email : ");
+            contact.setEmail(sc.next());
         for (Contact contact1 : contacts) {
             if (contact1.equals(contact)) {
                 System.out.println("Person already exists.");
@@ -109,33 +106,56 @@ public class AddressBook {
         }
         System.out.println(name + " not found!");
     }
+    void sortContact(){
 
+        Comparator<Contact> contactComparator = (a,b)->a.compareTo(b);
+        contacts.stream().sorted(contactComparator).forEach(x-> System.out.println(x));
+    }
     public void viewPersonByCity(String cityName) {
+        HashMap<Contact,String> contactHashMap = new HashMap<>();
         for (Contact c : contacts){
             if (c.getState().equals(cityName)){
-                contactHashMap.put(cityName,c);
-            }
+                contactHashMap.put(c,cityName);
+             }
         }
         Predicate<Contact> contactPredicate = t -> t.getCity().equals(cityName);
         contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
-        System.out.println(contactHashMap.keySet());;
+       long countCity =  contacts.stream().filter(contactPredicate).count();
+        System.out.println(contactHashMap.keySet());
+        System.out.println("Number persons by city name : "+countCity);
 
     }
     public void viewPersonByState(String stateName){
+        HashMap<String,Contact> contactHashMap = new HashMap<>();
         Predicate<Contact> contactPredicate = c->c.getState().equals(stateName);
-        contacts.stream().filter(contactPredicate).forEach(x->contactHashMap.put(stateName,x));
-        contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
+        long count = contacts.stream().filter(contactPredicate).count();
+        System.out.println("Number persons by state name : "+count);
        for (Contact c : contacts){
            if (c.getState().equals(stateName)){
               contactHashMap.put(stateName,c);
            }
        }
-        System.out.println(contactHashMap.keySet());;
-
-
+        System.out.println(contactHashMap.keySet());
     }
-    void printHashMap(){
-        System.out.println(contactHashMap.keySet());;
+    public long getCount(){
+        System.out.println("Enter by which you want count \n1.By state \n2.By city");
+        int choice = sc.nextInt();
+        long count=0;
+        switch (choice) {
+            case 1:
+                System.out.println("Enter state name : ");
+                String stateName = sc.next();
+            Predicate<Contact> predicate = (c) -> c.getState().equals(stateName);
+            count = contacts.stream().filter(predicate).count();
+
+            break;
+            case 2:   System.out.println("Enter city name : ");
+                String cityName = sc.next();
+                Predicate<Contact> predicate1 = (c) -> c.getState().equals(cityName);
+                count = contacts.stream().filter(predicate1).count();
+            break;
+        }
+        return count;
     }
 
 }
