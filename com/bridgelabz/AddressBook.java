@@ -7,7 +7,7 @@ public class AddressBook {
     ArrayList<Contact> contacts = new ArrayList<>();
     public void addContact() {
         int found = 0;
-            Contact contact = new Contact();
+//            Contact contact = new Contact();
             System.out.println("Enter the First Name : ");
             contact.setFirstName(sc.next());
             System.out.println("Enter the Last Name : ");
@@ -112,11 +112,11 @@ public class AddressBook {
         contacts.stream().sorted(contactComparator).forEach(x-> System.out.println(x));
     }
     public void viewPersonByCity(String cityName) {
-        HashMap<String,Contact> contactHashMap = new HashMap<>();
+        HashMap<Contact,String> contactHashMap = new HashMap<>();
         for (Contact c : contacts){
             if (c.getState().equals(cityName)){
-                contactHashMap.put(cityName,c);
-            }
+                contactHashMap.put(c,cityName);
+             }
         }
         Predicate<Contact> contactPredicate = t -> t.getCity().equals(cityName);
         contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
@@ -128,8 +128,6 @@ public class AddressBook {
     public void viewPersonByState(String stateName){
         HashMap<String,Contact> contactHashMap = new HashMap<>();
         Predicate<Contact> contactPredicate = c->c.getState().equals(stateName);
-   //   contacts.stream().filter(contactPredicate).forEach(x->contactHashMap.put(stateName,x));
-        contacts.stream().filter(contactPredicate).forEach(x-> System.out.println(x));
         long count = contacts.stream().filter(contactPredicate).count();
         System.out.println("Number persons by state name : "+count);
        for (Contact c : contacts){

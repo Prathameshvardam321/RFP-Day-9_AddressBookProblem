@@ -101,7 +101,6 @@ public class Contact implements Comparable {
                 ", email='" + email + '\'' +
                 '}';
     }
-
     void getPersonDetails(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name :");

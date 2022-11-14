@@ -55,7 +55,6 @@ public class AddressBookMain {
                    if (addressBookHashMap.containsKey(searchName1)){
                   addressBook = addressBookHashMap.get(searchName1);
                   addressBook.addContact();
-
                    }
                    else {
                    System.out.println("AddressBook not exists.");
