@@ -105,8 +105,7 @@ public class AddressBook {
         }
         System.out.println(name + " not found!");
     }
-    void sortContactByStateName(){
-
+    void sortContactByZipcode(){
         Comparator<Contact> contactComparator = (a,b)->a.compareTo(b);
         contacts.stream().sorted(contactComparator).forEach(x-> System.out.println(x));
     }
