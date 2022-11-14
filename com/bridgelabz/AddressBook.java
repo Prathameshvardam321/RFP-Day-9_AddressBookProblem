@@ -118,6 +118,7 @@ public class AddressBook {
                 contactHashMap.put(c,cityName);
              }
         }
+
         Predicate<Contact> contactPredicate = t -> t.getCity().equals(cityName);
         contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
        long countCity =  contacts.stream().filter(contactPredicate).count();
