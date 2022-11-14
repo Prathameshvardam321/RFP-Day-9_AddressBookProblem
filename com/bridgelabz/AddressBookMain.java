@@ -65,7 +65,7 @@ public class AddressBookMain {
                      addBookName1 = scanner.next();
                     if (addressBookHashMap.containsKey(addBookName1)){
                         addressBook = addressBookHashMap.get(addBookName1);
-                        addressBook.sortContactByCityName();
+                        addressBook.sortContactByStateName();
                     }else {
                         System.out.println("AddressBook not found.");
                     }
