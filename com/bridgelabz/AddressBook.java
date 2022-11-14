@@ -6,8 +6,7 @@ public class AddressBook {
     Contact contact = new Contact();
     ArrayList<Contact> contacts = new ArrayList<>();
     public void addContact() {
-        int found = 0;
-//            Contact contact = new Contact();
+            int found = 0;
             System.out.println("Enter the First Name : ");
             contact.setFirstName(sc.next());
             System.out.println("Enter the Last Name : ");
@@ -106,7 +105,7 @@ public class AddressBook {
         }
         System.out.println(name + " not found!");
     }
-    void sortContact(){
+    void sortContactByCityName(){
 
         Comparator<Contact> contactComparator = (a,b)->a.compareTo(b);
         contacts.stream().sorted(contactComparator).forEach(x-> System.out.println(x));

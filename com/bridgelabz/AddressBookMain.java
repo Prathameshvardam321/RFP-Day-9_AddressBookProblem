@@ -6,7 +6,6 @@ public class AddressBookMain {
         System.out.println("Welcome to Address Book Program");
         Scanner scanner = new Scanner(System.in);
         HashMap<String, AddressBook> addressBookHashMap = new HashMap<>();
-
         AddressBook addressBook ;
         int ch;
         do {
@@ -66,7 +65,7 @@ public class AddressBookMain {
                      addBookName1 = scanner.next();
                     if (addressBookHashMap.containsKey(addBookName1)){
                         addressBook = addressBookHashMap.get(addBookName1);
-                        addressBook.sortContact();
+                        addressBook.sortContactByCityName();
                     }else {
                         System.out.println("AddressBook not found.");
                     }
