@@ -1,0 +1,1 @@
+AddressBook{contact=Contact{firstName='Romil', lastName='Dev3', city='Mumbai_LAlbaug', state='Maharashtra', zipCode=1234, phoneNumber=5442, email='Kamaaa'}, contacts=[Contact{firstName='Romil', lastName='Dev3', city='Mumbai_LAlbaug', state='Maharashtra', zipCode=1234, phoneNumber=5442, email='Kamaaa'}]}
