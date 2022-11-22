@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import org.json.JSONObject;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -143,6 +145,21 @@ public class Contact implements Comparable {
     }
     String[] getContactStrings() {
         return new String[] {firstName, lastName, email, address, city, state, zipCode + "", phoneNumber + ""};
+    }
+    JSONObject getContactJSON() {
+        JSONObject jsonPerson = new JSONObject();
+        jsonPerson.put("firstName", firstName);
+        jsonPerson.put("lastName", lastName);
+        jsonPerson.put("email", email);
+        jsonPerson.put("address", address);
+        jsonPerson.put("city", city);
+        jsonPerson.put("state", state);
+        jsonPerson.put("zip", zipCode);
+        jsonPerson.put("phonNumber", phoneNumber);
+
+        JSONObject jsonPersonObject = new JSONObject();
+        jsonPersonObject.put("person", jsonPerson);
+        return jsonPersonObject;
     }
 
 }

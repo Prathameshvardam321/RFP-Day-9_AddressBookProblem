@@ -2,12 +2,15 @@ package com.bridgelabz;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
+import org.json.JSONArray;
+import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -118,6 +121,11 @@ public class AddressBookMain {
 
         //Reading from csv file
         FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("\"C:\\Users\\prath\\OneDrive\\Desktop\\Files\\addressbook.csv\"");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         String csvPath ="\"C:\\Users\\prath\\OneDrive\\Desktop\\Files\\addressbook.csv\"";
         try {
             fileReader = new FileReader(csvPath);
@@ -142,5 +150,31 @@ public class AddressBookMain {
                 System.out.print(value + "\t");
             System.out.println();
         });
+        // Reading and Writing JSON.
+
+        JSONArray jsonPersons = new JSONArray();
+
+        addressBookHashMap.keySet().stream().forEach(bookname -> addressBookHashMap.get(bookname).getPersons()
+                .stream().forEach(prsn -> jsonPersons);
+
+        Path jsonPath = Paths.get("C:/Users/micro/Downloads/persons-json.json");
+        try {
+            Files.deleteIfExists(jsonPath);
+            Files.writeString(jsonPath, jsonPersons.get(), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+        JSONParser jsonParser = new JSONParser();
+
+        System.out.println("\nReading data from JSON file:");
+        try {
+            Object object = jsonParser.parse(Files.newBufferedReader(jsonPath));
+            JSONArray personsList = (JSONArray) object;
+            System.out.println(personsList);
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
